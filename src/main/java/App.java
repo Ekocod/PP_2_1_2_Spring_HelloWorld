@@ -5,8 +5,15 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
-        HelloWorld bean =
+        HelloWorld firstHelloWorld =
                 (HelloWorld) applicationContext.getBean("helloworld");
-        System.out.println(bean.getMessage());
+        HelloWorld secondHelloWorld =
+                (HelloWorld) applicationContext.getBean("helloworld");
+        Cat firstCat =
+                (Cat) applicationContext.getBean("cat");
+        Cat secondCat =
+                (Cat) applicationContext.getBean("cat");
+        System.out.println("HelloWorld ссылаются на один и тот же объект? " + (firstHelloWorld == secondHelloWorld));
+        System.out.println("Cat ссылаются на один и тот же объект? " + (firstCat == secondCat));
     }
 }
